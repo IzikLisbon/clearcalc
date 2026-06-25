@@ -8,7 +8,7 @@
 <title>Mortgage Calculator — Monthly Payment & Total Interest | ClearCalc</title>
 <meta name="description" content="Free mortgage calculator. Enter your home price, down payment, interest rate, and term to see your monthly payment, total interest, and total cost instantly.">
 <link rel="stylesheet" href="assets/style.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Mortgage Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Estimate your monthly mortgage payment and total interest over the life of a fixed-rate home loan."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much house can I afford?","acceptedAnswer":{"@type":"Answer","text":"A common guideline is to keep total housing costs under about 28% of your gross monthly income. Try different home prices to see which monthly payment fits that budget."}},{"@type":"Question","name":"Is a 15-year or 30-year mortgage cheaper?","acceptedAnswer":{"@type":"Answer","text":"A 15-year term has higher monthly payments but far less total interest. A 30-year term has lower monthly payments but costs more overall."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Mortgage Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"dateModified":"2026-06-25","description":"Estimate your monthly mortgage payment and total interest over the life of a fixed-rate home loan."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much house can I afford?","acceptedAnswer":{"@type":"Answer","text":"A common guideline is to keep total housing costs under about 28% of your gross monthly income. Try different home prices to see which monthly payment fits that budget."}},{"@type":"Question","name":"Is a 15-year or 30-year mortgage cheaper?","acceptedAnswer":{"@type":"Answer","text":"A 15-year term has higher monthly payments but far less total interest. A 30-year term has lower monthly payments but costs more overall."}}]}]}</script>
 </head>
 <body>
 <header class="site"><div class="container">
@@ -31,6 +31,15 @@
     <h1 style="font-size:32px">Mortgage Calculator</h1>
     <p style="margin:0;max-width:680px">Estimate your monthly mortgage payment and see how much interest you will pay over the life of the loan.</p>
   </section>
+
+  <!--RATES:START-->
+  <div style="margin:14px 0 4px;padding:12px 16px;border:1px solid var(--line);border-radius:12px;background:#f6faf8;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px">
+    <strong style="color:var(--brand)">Today's average mortgage rates</strong>
+    <span>30-yr fixed <b>6.49%</b></span>
+    <span>15-yr fixed <b>5.84%</b></span>
+    <span style="font-size:12px;color:var(--muted);flex-basis:100%">As of Jun 25, 2026 · Source: Freddie Mac PMMS via FRED (Federal Reserve Bank of St. Louis) · updated weekly</span>
+  </div>
+  <!--RATES:END-->
 
   <div class="calc-wrap">
     <div class="panel">

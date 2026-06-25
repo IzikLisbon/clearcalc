@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto Loan Calculator — ClearCalc</title>
+<meta name="robots" content="noindex">
+<style>
+  :root{--brand:#0b7a5b;--brand2:#0a6bd1;--ink:#0f1b2d;--muted:#5b6b82;--line:#e6ecf3;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:#fff;line-height:1.5;}
+  .w{max-width:480px;margin:0 auto;padding:16px;border:1px solid var(--line);border-radius:14px;}
+  h1{font-size:18px;margin:0 0 12px;}
+  .f{margin-bottom:10px;}
+  .f label{display:block;font-weight:600;font-size:13px;margin-bottom:4px;}
+  .in{display:flex;align-items:center;border:1px solid var(--line);border-radius:9px;overflow:hidden;}
+  .in span{padding:0 10px;color:var(--muted);background:#f1f5f9;align-self:stretch;display:flex;align-items:center;border-right:1px solid var(--line);font-size:14px;}
+  .in input{border:0;outline:0;padding:9px 10px;font-size:15px;width:100%;}
+  .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .res{margin-top:12px;padding:12px;border-radius:10px;background:#f6f8fb;text-align:center;}
+  .res .lbl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;font-weight:600;}
+  .res .big{font-size:30px;font-weight:800;color:var(--brand);margin-top:2px;}
+  .stat{display:flex;justify-content:space-between;font-size:13px;padding:5px 2px;border-top:1px dashed var(--line);}
+  .stat .v{font-weight:700;}
+  .credit{text-align:center;margin-top:10px;font-size:12px;}
+  .credit a{color:var(--brand2);text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+<div class="w">
+  <h1>Auto Loan Calculator</h1>
+  <div class="f"><label>Vehicle price</label><div class="in"><span>$</span><input id="price" inputmode="decimal" value="35,000"></div></div>
+  <div class="r2">
+    <div class="f"><label>Down payment</label><div class="in"><span>$</span><input id="down" inputmode="decimal" value="4,000"></div></div>
+    <div class="f"><label>Trade-in value</label><div class="in"><span>$</span><input id="trade" inputmode="decimal" value="0"></div></div>
+  </div>
+  <div class="r2">
+    <div class="f"><label>Interest rate</label><div class="in"><input id="rate" inputmode="decimal" value="7.5"><span>%</span></div></div>
+    <div class="f"><label>Term</label><div class="in"><input id="years" inputmode="numeric" value="5"><span>yrs</span></div></div>
+  </div>
+  <div class="res">
+    <div class="lbl">Monthly payment</div>
+    <div class="big" id="r-monthly">$0</div>
+  </div>
+  <div class="stat"><span>Loan amount</span><span class="v" id="r-loan">$0</span></div>
+  <div class="stat"><span>Total interest</span><span class="v" id="r-int">$0</span></div>
+  <div class="stat"><span>Total paid</span><span class="v" id="r-total">$0</span></div>
+  <div class="credit"><a href="https://getclearcalc.com/auto-loan-calculator.html?utm_source=embed&utm_medium=widget" target="_blank" rel="noopener">Powered by ClearCalc</a></div>
+</div>
+<script src="https://getclearcalc.com/assets/finance.js"></script>
+<script>
+var F = window.Finance;
+var ids = ['price','down','trade','rate','years'];
+function calc(){
+  var price = F.parseNum(document.getElementById('price').value);
+  var down = F.parseNum(document.getElementById('down').value);
+  var trade = F.parseNum(document.getElementById('trade').value);
+  var rate = F.parseNum(document.getElementById('rate').value);
+  var years = F.parseNum(document.getElementById('years').value);
+  var loan = Math.max(0, price - down - trade);
+  var s = F.loanSummary(loan, rate, years);
+  document.getElementById('r-monthly').textContent = F.fmtMoney(s.monthly);
+  document.getElementById('r-loan').textContent = F.fmtMoney(loan, {cents:false});
+  document.getElementById('r-int').textContent = F.fmtMoney(s.totalInterest, {cents:false});
+  document.getElementById('r-total').textContent = F.fmtMoney(s.totalPaid, {cents:false});
+}
+ids.forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+calc();
+</script>
+</body>
+</html>

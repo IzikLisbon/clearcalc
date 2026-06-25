@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-adsense-account" content="ca-pub-5611852230193979">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5611852230193979" crossorigin="anonymous"></script>
-<title>Embed a Free Mortgage Calculator on Your Site | ClearCalc</title>
-<meta name="description" content="Add a free, no-signup mortgage calculator to your website with one line of code. Lightweight, responsive, and free to use on any blog or business site.">
+<title>Embed a Free Financial Calculator on Your Site | ClearCalc</title>
+<meta name="description" content="Add a free, no-signup financial calculator to your website with one line of code. Mortgage, auto, loan, debt, compound interest, retirement and savings widgets. Lightweight, responsive, free for any blog or business site.">
 <link rel="stylesheet" href="assets/style.css">
 <style>
   .snippet{position:relative;}
@@ -16,6 +16,12 @@
   .preview-wrap{margin-top:8px;}
   .embed-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0;}
   @media(max-width:760px){.embed-grid{grid-template-columns:1fr;}}
+  .picker{margin:6px 0 18px;}
+  .picker label{font-weight:700;font-size:14px;margin-right:8px;}
+  .picker select{font-size:15px;padding:9px 12px;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);min-width:240px;}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;margin:18px 0 6px;}
+  .gallery a{display:block;padding:12px 14px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14px;background:#f9fbfd;}
+  .gallery a:hover{border-color:var(--brand);color:var(--brand);}
 </style>
 </head>
 <body>
@@ -37,14 +43,28 @@
   <p class="crumbs"><a href="index.html">Home</a> › Embed a calculator</p>
   <section class="hero" style="padding:26px 0 6px;text-align:left">
     <h1 style="font-size:32px">Add a free calculator to your site</h1>
-    <p style="margin:0;max-width:680px">Drop the ClearCalc mortgage calculator into any website, blog, or article with one line of code. It's lightweight, responsive, free, and needs no signup. Great for real-estate, finance, and personal-budget content.</p>
+    <p style="margin:0;max-width:720px">Drop any ClearCalc calculator into your website, blog, or article with one line of code. Eight calculators to choose from. Each one is lightweight, responsive, free, and needs no signup. Great for real-estate, finance, and personal-budget content.</p>
   </section>
+
+  <div class="picker">
+    <label for="calc">Choose a calculator:</label>
+    <select id="calc">
+      <option value="mortgage-calculator" data-h="540">Mortgage Calculator</option>
+      <option value="refinance-calculator" data-h="560">Refinance Calculator</option>
+      <option value="auto-loan-calculator" data-h="560">Auto Loan Calculator</option>
+      <option value="loan-calculator" data-h="500">Loan Calculator</option>
+      <option value="debt-payoff-calculator" data-h="520">Debt Payoff Calculator</option>
+      <option value="compound-interest-calculator" data-h="520">Compound Interest Calculator</option>
+      <option value="retirement-calculator" data-h="560">Retirement Calculator</option>
+      <option value="savings-goal-calculator" data-h="520">Savings Goal Calculator</option>
+    </select>
+  </div>
 
   <div class="embed-grid">
     <div class="panel">
       <h2>1. Copy the embed code</h2>
       <div class="snippet">
-        <textarea id="snippet" readonly>&lt;iframe src="https://getclearcalc.com/embed/mortgage-calculator.html" width="100%" height="540" style="max-width:480px;border:1px solid #e6ecf3;border-radius:14px" loading="lazy" title="Mortgage Calculator by ClearCalc"&gt;&lt;/iframe&gt;</textarea>
+        <textarea id="snippet" readonly></textarea>
         <button class="copy-btn" id="copy">Copy code</button>
       </div>
       <p style="font-size:13px;color:var(--muted);margin-top:12px">Paste it into your page's HTML wherever you want the calculator to appear. That's it. Please keep the "Powered by ClearCalc" link so the tool stays free.</p>
@@ -52,22 +72,34 @@
     <div class="panel">
       <h2>2. Live preview</h2>
       <div class="preview-wrap">
-        <iframe src="embed/mortgage-calculator.html" width="100%" height="540" style="max-width:480px;border:1px solid var(--line);border-radius:14px" loading="lazy" title="Mortgage Calculator preview"></iframe>
+        <iframe id="preview" src="embed/mortgage-calculator.html" width="100%" height="540" style="max-width:480px;border:1px solid var(--line);border-radius:14px" loading="lazy" title="Calculator preview"></iframe>
       </div>
     </div>
   </div>
 
   <div class="content">
+    <h2>All eight free calculator widgets</h2>
+    <div class="gallery">
+      <a href="embed/mortgage-calculator.html" target="_blank" rel="noopener">Mortgage →</a>
+      <a href="embed/refinance-calculator.html" target="_blank" rel="noopener">Refinance →</a>
+      <a href="embed/auto-loan-calculator.html" target="_blank" rel="noopener">Auto Loan →</a>
+      <a href="embed/loan-calculator.html" target="_blank" rel="noopener">Loan →</a>
+      <a href="embed/debt-payoff-calculator.html" target="_blank" rel="noopener">Debt Payoff →</a>
+      <a href="embed/compound-interest-calculator.html" target="_blank" rel="noopener">Compound Interest →</a>
+      <a href="embed/retirement-calculator.html" target="_blank" rel="noopener">Retirement →</a>
+      <a href="embed/savings-goal-calculator.html" target="_blank" rel="noopener">Savings Goal →</a>
+    </div>
+
     <h2>Why embed a ClearCalc calculator?</h2>
-    <p>An interactive calculator keeps readers on your page longer and helps them make a real decision instead of bouncing to a search engine. The ClearCalc widget runs entirely in the visitor's browser, loads fast, works on mobile, and never asks anyone to sign up.</p>
+    <p>An interactive calculator keeps readers on your page longer and helps them make a real decision instead of bouncing to a search engine. Every ClearCalc widget runs entirely in the visitor's browser, loads fast, works on mobile, and never asks anyone to sign up.</p>
     <h3>What's included</h3>
     <ul>
-      <li>Home price, down payment, interest rate, and term inputs</li>
-      <li>Live monthly payment, loan amount, and total interest</li>
+      <li>Eight calculators: mortgage, refinance, auto loan, loan, debt payoff, compound interest, retirement, and savings goal</li>
+      <li>Live, instant results as the reader types</li>
       <li>Responsive layout that fits any column width</li>
       <li>Free to use on personal and commercial sites</li>
     </ul>
-    <p class="disclaimer">Estimates only, not financial advice. More embeddable calculators are on the way.</p>
+    <p class="disclaimer">Estimates only, not financial advice.</p>
   </div>
 </div></main>
 
@@ -78,10 +110,34 @@
 
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
-document.getElementById('copy').addEventListener('click', function(){
-  var ta = document.getElementById('snippet');
-  ta.select(); ta.setSelectionRange(0, 99999);
-  try { navigator.clipboard.writeText(ta.value); } catch(e) { document.execCommand('copy'); }
+
+var sel = document.getElementById('calc');
+var snippet = document.getElementById('snippet');
+var preview = document.getElementById('preview');
+var copyBtn = document.getElementById('copy');
+
+function buildSnippet(slug, h, title){
+  return '<iframe src="https://getclearcalc.com/embed/' + slug + '.html" width="100%" height="' + h +
+    '" style="max-width:480px;border:1px solid #e6ecf3;border-radius:14px" loading="lazy" title="' +
+    title + ' by ClearCalc"></iframe>';
+}
+
+function sync(){
+  var opt = sel.options[sel.selectedIndex];
+  var slug = sel.value;
+  var h = opt.getAttribute('data-h') || '540';
+  var title = opt.text;
+  snippet.value = buildSnippet(slug, h, title);
+  preview.src = 'embed/' + slug + '.html';
+  preview.height = h;
+}
+
+sel.addEventListener('change', sync);
+sync();
+
+copyBtn.addEventListener('click', function(){
+  snippet.select(); snippet.setSelectionRange(0, 99999);
+  try { navigator.clipboard.writeText(snippet.value); } catch(e) { document.execCommand('copy'); }
   this.textContent = 'Copied!';
   var self = this; setTimeout(function(){ self.textContent = 'Copy code'; }, 2000);
 });
