@@ -1,0 +1,100 @@
+:root{
+  --bg:#f6f8fb; --card:#ffffff; --ink:#0f1b2d; --muted:#5b6b82;
+  --brand:#0b7a5b; --brand-2:#0a6bd1; --accent:#0b7a5b; --line:#e6ecf3;
+  --good:#0b7a5b; --shadow:0 10px 30px rgba(15,27,45,.08);
+  --radius:16px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.6;}
+a{color:var(--brand-2);text-decoration:none;}
+a:hover{text-decoration:underline;}
+.container{max-width:1040px;margin:0 auto;padding:0 20px;}
+.narrow{max-width:760px;}
+
+/* Header */
+header.site{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;}
+header.site .container{display:flex;align-items:center;justify-content:space-between;height:64px;}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;color:var(--ink);}
+.brand .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--brand),var(--brand-2));
+  display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;}
+nav.top a{color:var(--muted);font-weight:600;margin-left:20px;font-size:15px;}
+nav.top a:hover{color:var(--ink);text-decoration:none;}
+
+/* Hero */
+.hero{padding:54px 0 30px;text-align:center;}
+.hero h1{font-size:40px;line-height:1.12;margin:0 0 12px;letter-spacing:-.5px;}
+.hero p{font-size:19px;color:var(--muted);margin:0 auto;max-width:620px;}
+
+/* Calculator grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px;margin:30px 0 50px;}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;
+  box-shadow:var(--shadow);transition:transform .12s ease, box-shadow .12s ease;display:block;}
+.tile:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(15,27,45,.12);text-decoration:none;}
+.tile .ic{width:42px;height:42px;border-radius:11px;background:#eaf5f0;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:12px;}
+.tile h3{margin:0 0 6px;font-size:18px;color:var(--ink);}
+.tile p{margin:0;color:var(--muted);font-size:14px;}
+
+/* Calculator page layout */
+.calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0 40px;}
+@media(max-width:760px){.calc-wrap{grid-template-columns:1fr;}.hero h1{font-size:30px;}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);}
+.panel h2{margin:0 0 16px;font-size:18px;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-weight:600;font-size:14px;margin-bottom:6px;}
+.field .hint{color:var(--muted);font-weight:400;}
+.input{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden;}
+.input span{padding:0 12px;color:var(--muted);background:#f1f5f9;align-self:stretch;display:flex;align-items:center;border-right:1px solid var(--line);}
+.input input{border:0;outline:0;padding:12px;font-size:16px;width:100%;color:var(--ink);}
+.input input:focus{box-shadow:inset 0 0 0 2px rgba(11,107,209,.25);border-radius:0 10px 10px 0;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+/* Results */
+.result-main{text-align:center;padding:8px 0 18px;border-bottom:1px solid var(--line);margin-bottom:16px;}
+.result-main .label{color:var(--muted);font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+.result-main .big{font-size:44px;font-weight:800;color:var(--brand);letter-spacing:-1px;margin-top:4px;}
+.stat{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);font-size:15px;}
+.stat:last-child{border-bottom:0;}
+.stat .v{font-weight:700;}
+
+/* Content / SEO */
+.content{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);margin-bottom:30px;}
+.content h2{margin-top:6px;}
+.content h3{margin-top:22px;}
+.content p,.content li{color:#2b3a4f;}
+.formula{background:#0f1b2d;color:#d7f5ea;border-radius:10px;padding:14px 16px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;overflow-x:auto;}
+.faq details{border:1px solid var(--line);border-radius:10px;padding:4px 16px;margin-bottom:10px;background:#fff;}
+.faq summary{font-weight:700;cursor:pointer;padding:12px 0;}
+.faq p{margin:0 0 14px;}
+
+/* Ad slot placeholders (filled after AdSense approval) */
+.ad{background:#fff;border:1px dashed #cdd8e6;border-radius:12px;color:#9aa9bd;text-align:center;
+  padding:20px;margin:24px 0;font-size:13px;}
+
+/* Affiliate / lead-gen offer box (rendered by offers.js only when a real
+   partner link is set; hidden otherwise so visitors never see a dead button) */
+.offer{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border-radius:var(--radius);
+  padding:24px 26px;margin:24px 0;box-shadow:var(--shadow);}
+.offer .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.6px;opacity:.85;font-weight:700;}
+.offer h3{margin:6px 0 6px;font-size:21px;color:#fff;}
+.offer p{margin:0 0 14px;color:#eafff7;font-size:15px;max-width:560px;}
+.offer .btn{display:inline-block;background:#fff;color:#0b3b2e;font-weight:700;padding:11px 22px;border-radius:10px;}
+.offer .btn:hover{text-decoration:none;background:#f1faf6;}
+.offer .disc{font-size:11px;opacity:.85;margin-top:12px;}
+
+/* Top nav wraps cleanly as the calculator set grows */
+nav.top{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:0 4px;}
+@media(max-width:640px){
+  header.site .container{height:auto;padding-top:10px;padding-bottom:10px;flex-wrap:wrap;}
+  nav.top{justify-content:flex-start;}
+  nav.top a{margin-left:0;margin-right:16px;}
+}
+
+/* Footer */
+footer.site{border-top:1px solid var(--line);background:#fff;margin-top:40px;}
+footer.site .container{padding:26px 20px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;color:var(--muted);font-size:14px;}
+footer.site a{color:var(--muted);margin-right:16px;}
+.disclaimer{font-size:12px;color:#90a0b5;margin-top:8px;}
+.crumbs{font-size:13px;color:var(--muted);margin:18px 0 0;}

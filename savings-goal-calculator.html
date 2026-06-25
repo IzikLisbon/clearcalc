@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Savings Goal Calculator — How Much to Save Each Month | ClearCalc</title>
+<meta name="description" content="Free savings goal calculator. Enter your target, timeframe, starting balance, and expected return to find exactly how much to save each month.">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Savings Goal Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Find out exactly how much to set aside each month to reach a savings target on time."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What if I can't save that much per month?","acceptedAnswer":{"@type":"Answer","text":"Extend the timeframe or lower the goal. A longer horizon means smaller monthly contributions and more help from compound growth."}},{"@type":"Question","name":"Does my starting balance matter?","acceptedAnswer":{"@type":"Answer","text":"A lot. Money already saved keeps compounding the whole time, which shrinks the monthly amount you need."}}]}]}</script>
+</head>
+<body>
+<header class="site"><div class="container">
+  <a class="brand" href="index.html"><span class="logo">C</span> ClearCalc</a>
+  <nav class="top">
+    <a href="mortgage-calculator.html">Mortgage</a>
+    <a href="refinance-calculator.html">Refinance</a>
+    <a href="auto-loan-calculator.html">Auto Loan</a>
+    <a href="loan-calculator.html">Loan</a>
+    <a href="debt-payoff-calculator.html">Debt Payoff</a>
+    <a href="compound-interest-calculator.html">Compound</a>
+    <a href="retirement-calculator.html">Retirement</a>
+    <a href="savings-goal-calculator.html">Savings</a>
+  </nav>
+</div></header>
+
+<main><div class="container">
+  <p class="crumbs"><a href="index.html">Home</a> › Savings Goal Calculator</p>
+  <section class="hero" style="padding:26px 0 6px;text-align:left">
+    <h1 style="font-size:32px">Savings Goal Calculator</h1>
+    <p style="margin:0;max-width:680px">Find out exactly how much to set aside each month to reach your savings target on time.</p>
+  </section>
+
+  <div class="calc-wrap">
+    <div class="panel">
+      <h2>Your goal</h2>
+      <div class="field"><label>Savings goal</label>
+        <div class="input"><span>$</span><input id="goal" inputmode="decimal" value="30,000"></div></div>
+      <div class="field"><label>Already saved</label>
+        <div class="input"><span>$</span><input id="start" inputmode="decimal" value="4,000"></div></div>
+      <div class="row2">
+        <div class="field"><label>Annual return</label>
+          <div class="input"><input id="rate" inputmode="decimal" value="4"><span>%</span></div></div>
+        <div class="field"><label>Years to save</label>
+          <div class="input"><input id="years" inputmode="numeric" value="5"><span>yrs</span></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="result-main">
+        <div class="label">Save each month</div>
+        <div class="big" id="r-monthly">$0</div>
+      </div>
+      <div class="stat"><span>Goal</span><span class="v" id="r-goal">$0</span></div>
+      <div class="stat"><span>Total you contribute</span><span class="v" id="r-contrib">$0</span></div>
+      <div class="stat"><span>Interest does the rest</span><span class="v" id="r-int">$0</span></div>
+    </div>
+  </div>
+
+  <div class="offer" data-offer="savings"></div>
+  <div class="ad">Ad space</div>
+
+  <div class="content">
+    <h2>How the savings goal calculator works</h2>
+    <p>Tell us the amount you want, when you want it, what you have already saved, and the return you expect.
+    We solve for the monthly contribution that gets you there, letting compound growth cover part of the goal
+    so you do not have to save the full amount out of pocket.</p>
+    <p class="formula">PMT = ( Goal − P(1+i)ⁿ ) / [ ((1+i)ⁿ − 1) / i ]<br>
+    P = already saved · i = monthly rate (annual ÷ 12) · n = months</p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <details open><summary>What if I can't save that much per month?</summary>
+        <p>Extend the timeframe or lower the goal. A longer horizon means smaller monthly contributions and
+        more help from compound growth. Adjust the years above to see the trade-off.</p></details>
+      <details><summary>Where should I keep the money?</summary>
+        <p>For short goals (1–3 years), a high-yield savings account or money market keeps it safe. For longer
+        goals you might accept more risk for a higher expected return, set the return rate to match.</p></details>
+      <details><summary>Does the starting balance matter?</summary>
+        <p>A lot. Money you have already saved keeps compounding the whole time, so it shrinks the monthly
+        amount you need. Enter your real current balance for an accurate plan.</p></details>
+    </div>
+    <p class="disclaimer">Estimates only, not financial advice. Returns are not guaranteed.</p>
+  </div>
+</div></main>
+
+<footer class="site"><div class="container">
+  <div><a href="index.html">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="loan-calculator.html">Loan</a><a href="compound-interest-calculator.html">Compound Interest</a></div>
+  <div>© <span id="yr"></span> ClearCalc</div>
+</div></footer>
+
+<script src="assets/finance.js"></script>
+<script src="assets/offers.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var F = window.Finance;
+function calc(){
+  var goal = F.parseNum(document.getElementById('goal').value);
+  var start = F.parseNum(document.getElementById('start').value);
+  var rate = F.parseNum(document.getElementById('rate').value);
+  var years = F.parseNum(document.getElementById('years').value);
+  var monthly = F.savingsGoalMonthly(goal, start, rate, years);
+  var months = Math.round(years*12);
+  var contrib = start + monthly*months;
+  document.getElementById('r-monthly').textContent = F.fmtMoney(monthly);
+  document.getElementById('r-goal').textContent = F.fmtMoney(goal, {cents:false});
+  document.getElementById('r-contrib').textContent = F.fmtMoney(contrib, {cents:false});
+  document.getElementById('r-int').textContent = F.fmtMoney(Math.max(0, goal - contrib), {cents:false});
+}
+['goal','start','rate','years'].forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+calc();
+</script>
+</body>
+</html>

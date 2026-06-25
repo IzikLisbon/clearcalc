@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mortgage Calculator — Monthly Payment & Total Interest | ClearCalc</title>
+<meta name="description" content="Free mortgage calculator. Enter your home price, down payment, interest rate, and term to see your monthly payment, total interest, and total cost instantly.">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Mortgage Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Estimate your monthly mortgage payment and total interest over the life of a fixed-rate home loan."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much house can I afford?","acceptedAnswer":{"@type":"Answer","text":"A common guideline is to keep total housing costs under about 28% of your gross monthly income. Try different home prices to see which monthly payment fits that budget."}},{"@type":"Question","name":"Is a 15-year or 30-year mortgage cheaper?","acceptedAnswer":{"@type":"Answer","text":"A 15-year term has higher monthly payments but far less total interest. A 30-year term has lower monthly payments but costs more overall."}}]}]}</script>
+</head>
+<body>
+<header class="site"><div class="container">
+  <a class="brand" href="index.html"><span class="logo">C</span> ClearCalc</a>
+  <nav class="top">
+    <a href="mortgage-calculator.html">Mortgage</a>
+    <a href="refinance-calculator.html">Refinance</a>
+    <a href="auto-loan-calculator.html">Auto Loan</a>
+    <a href="loan-calculator.html">Loan</a>
+    <a href="debt-payoff-calculator.html">Debt Payoff</a>
+    <a href="compound-interest-calculator.html">Compound</a>
+    <a href="retirement-calculator.html">Retirement</a>
+    <a href="savings-goal-calculator.html">Savings</a>
+  </nav>
+</div></header>
+
+<main><div class="container">
+  <p class="crumbs"><a href="index.html">Home</a> › Mortgage Calculator</p>
+  <section class="hero" style="padding:26px 0 6px;text-align:left">
+    <h1 style="font-size:32px">Mortgage Calculator</h1>
+    <p style="margin:0;max-width:680px">Estimate your monthly mortgage payment and see how much interest you will pay over the life of the loan.</p>
+  </section>
+
+  <div class="calc-wrap">
+    <div class="panel">
+      <h2>Your mortgage</h2>
+      <div class="field"><label>Home price</label>
+        <div class="input"><span>$</span><input id="price" inputmode="decimal" value="350,000"></div></div>
+      <div class="field"><label>Down payment</label>
+        <div class="input"><span>$</span><input id="down" inputmode="decimal" value="70,000"></div></div>
+      <div class="row2">
+        <div class="field"><label>Interest rate <span class="hint">(APR)</span></label>
+          <div class="input"><input id="rate" inputmode="decimal" value="6.5"><span>%</span></div></div>
+        <div class="field"><label>Term</label>
+          <div class="input"><input id="years" inputmode="numeric" value="30"><span>yrs</span></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="result-main">
+        <div class="label">Estimated monthly payment</div>
+        <div class="big" id="r-monthly">$0</div>
+      </div>
+      <div class="stat"><span>Loan amount</span><span class="v" id="r-loan">$0</span></div>
+      <div class="stat"><span>Total interest paid</span><span class="v" id="r-int">$0</span></div>
+      <div class="stat"><span>Total of all payments</span><span class="v" id="r-total">$0</span></div>
+      <div class="stat"><span>Payoff</span><span class="v" id="r-months">0 months</span></div>
+    </div>
+  </div>
+
+  <div class="offer" data-offer="mortgage"></div>
+  <div class="ad">Ad space</div>
+
+  <div class="content">
+    <h2>How the mortgage calculator works</h2>
+    <p>This calculator estimates the monthly payment of <strong>principal and interest</strong> on a fixed-rate
+    mortgage. We take your loan amount (home price minus down payment) and spread it over the term using the
+    standard amortization formula, so each payment is the same amount for the whole loan.</p>
+    <p class="formula">M = P · [ i(1+i)ⁿ ] / [ (1+i)ⁿ − 1 ]<br>
+    P = loan amount · i = monthly rate (APR ÷ 12) · n = number of months (years × 12)</p>
+    <h3>What it does not include</h3>
+    <p>To keep the estimate clear, the monthly figure shows principal and interest only. Your real housing
+    payment may also include property taxes, homeowners insurance, HOA dues, and mortgage insurance (PMI).
+    Add those separately for a full picture.</p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <details open><summary>How much house can I afford?</summary>
+        <p>A common guideline is to keep total housing costs under about 28% of your gross monthly income.
+        Use this calculator to try different home prices and see which monthly payment fits that budget.</p></details>
+      <details><summary>Does a bigger down payment lower my payment?</summary>
+        <p>Yes. A larger down payment reduces the loan amount, which lowers both the monthly payment and the
+        total interest you pay. It can also help you avoid PMI once you reach 20% down.</p></details>
+      <details><summary>15-year vs 30-year mortgage — which is cheaper?</summary>
+        <p>A 15-year term has higher monthly payments but far less total interest. A 30-year term has lower
+        monthly payments but costs more overall. Switch the term above to compare both instantly.</p></details>
+      <details><summary>Is this the same as my APR?</summary>
+        <p>This uses your interest rate. APR also folds in certain lender fees, so your lender's APR may be
+        slightly higher. Use the rate from your loan estimate for the closest result.</p></details>
+    </div>
+    <p class="disclaimer">Estimates only, not financial advice. Confirm figures with your lender.</p>
+  </div>
+</div></main>
+
+<footer class="site"><div class="container">
+  <div><a href="index.html">Home</a><a href="loan-calculator.html">Loan</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="savings-goal-calculator.html">Savings Goal</a></div>
+  <div>© <span id="yr"></span> ClearCalc</div>
+</div></footer>
+
+<script src="assets/finance.js"></script>
+<script src="assets/offers.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var F = window.Finance;
+var ids = ['price','down','rate','years'];
+function calc(){
+  var price = F.parseNum(document.getElementById('price').value);
+  var down = F.parseNum(document.getElementById('down').value);
+  var rate = F.parseNum(document.getElementById('rate').value);
+  var years = F.parseNum(document.getElementById('years').value);
+  var loan = Math.max(0, price - down);
+  var s = F.loanSummary(loan, rate, years);
+  document.getElementById('r-monthly').textContent = F.fmtMoney(s.monthly);
+  document.getElementById('r-loan').textContent = F.fmtMoney(loan, {cents:false});
+  document.getElementById('r-int').textContent = F.fmtMoney(s.totalInterest, {cents:false});
+  document.getElementById('r-total').textContent = F.fmtMoney(s.totalPaid, {cents:false});
+  document.getElementById('r-months').textContent = s.months + ' months (' + (s.months/12) + ' yrs)';
+}
+ids.forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+calc();
+</script>
+</body>
+</html>

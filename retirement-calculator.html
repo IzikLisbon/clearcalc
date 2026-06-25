@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retirement Calculator — 401(k) & Nest Egg Projection | ClearCalc</title>
+<meta name="description" content="Free retirement calculator. Enter your age, current savings, monthly contribution, and expected return to project your nest egg at retirement.">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Retirement Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Project how large your retirement savings could grow based on your contributions and expected return."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much should I save for retirement?","acceptedAnswer":{"@type":"Answer","text":"A common guideline is to save about 15% of gross income, including any employer match. Use the calculator to see whether your current contribution reaches your goal."}},{"@type":"Question","name":"What return rate is realistic?","acceptedAnswer":{"@type":"Answer","text":"A diversified stock-heavy portfolio has historically averaged roughly 6 to 7% per year after inflation over long periods, though returns vary and are never guaranteed."}}]}]}</script>
+</head>
+<body>
+<header class="site"><div class="container">
+  <a class="brand" href="index.html"><span class="logo">C</span> ClearCalc</a>
+  <nav class="top">
+    <a href="mortgage-calculator.html">Mortgage</a>
+    <a href="refinance-calculator.html">Refinance</a>
+    <a href="auto-loan-calculator.html">Auto Loan</a>
+    <a href="loan-calculator.html">Loan</a>
+    <a href="debt-payoff-calculator.html">Debt Payoff</a>
+    <a href="compound-interest-calculator.html">Compound</a>
+    <a href="retirement-calculator.html">Retirement</a>
+    <a href="savings-goal-calculator.html">Savings</a>
+  </nav>
+</div></header>
+
+<main><div class="container">
+  <p class="crumbs"><a href="index.html">Home</a> › Retirement Calculator</p>
+  <section class="hero" style="padding:26px 0 6px;text-align:left">
+    <h1 style="font-size:32px">Retirement Calculator</h1>
+    <p style="margin:0;max-width:680px">Project how big your retirement savings could grow from your current balance plus monthly contributions.</p>
+  </section>
+
+  <div class="calc-wrap">
+    <div class="panel">
+      <h2>Your retirement plan</h2>
+      <div class="row2">
+        <div class="field"><label>Current age</label>
+          <div class="input"><input id="age" inputmode="numeric" value="30"><span>yrs</span></div></div>
+        <div class="field"><label>Retirement age</label>
+          <div class="input"><input id="retAge" inputmode="numeric" value="65"><span>yrs</span></div></div>
+      </div>
+      <div class="field"><label>Current savings</label>
+        <div class="input"><span>$</span><input id="balance" inputmode="decimal" value="25,000"></div></div>
+      <div class="field"><label>Monthly contribution</label>
+        <div class="input"><span>$</span><input id="contrib" inputmode="decimal" value="600"></div></div>
+      <div class="field"><label>Expected annual return</label>
+        <div class="input"><input id="rate" inputmode="decimal" value="7"><span>%</span></div></div>
+    </div>
+    <div class="panel">
+      <div class="result-main">
+        <div class="label">Projected savings at retirement</div>
+        <div class="big" id="r-fv">$0</div>
+      </div>
+      <div class="stat"><span>Years until retirement</span><span class="v" id="r-years">0</span></div>
+      <div class="stat"><span>Total you contribute</span><span class="v" id="r-contrib">$0</span></div>
+      <div class="stat"><span>Investment growth</span><span class="v" id="r-growth">$0</span></div>
+    </div>
+  </div>
+
+  <div class="offer" data-offer="invest"></div>
+  <div class="ad">Ad space</div>
+
+  <div class="content">
+    <h2>How the retirement calculator works</h2>
+    <p>We grow your current savings and your monthly contributions month by month at your expected annual
+    return (compounded monthly) until you reach retirement age. The result is an estimate of your nest egg,
+    split into the money you put in and the growth that compounding added on top.</p>
+    <p class="formula">FV = P(1+i)ⁿ + PMT · [ (1+i)ⁿ − 1 ] / i<br>
+    P = current savings · PMT = monthly contribution · i = monthly return (annual ÷ 12) · n = months to retirement</p>
+    <h3>Why starting early wins</h3>
+    <p>The dollars you invest earliest have the most time to compound, so they do the heaviest lifting. The
+    same monthly contribution started ten years sooner can end up worth far more, often more than double.</p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <details open><summary>How much should I save for retirement?</summary>
+        <p>A common guideline is about 15% of gross income, including any employer match. Use the calculator to
+        check whether your current contribution reaches the nest egg you want.</p></details>
+      <details><summary>What return rate is realistic?</summary>
+        <p>A diversified, stock-heavy portfolio has historically averaged roughly 6–7% per year after inflation
+        over long periods. Returns vary year to year and are never guaranteed, so it's wise to be conservative.</p></details>
+      <details><summary>Should I count my employer match?</summary>
+        <p>Yes. An employer 401(k) match is free money. Include it in your monthly contribution figure, it's one
+        of the fastest ways to grow your balance.</p></details>
+      <details><summary>Does this account for inflation?</summary>
+        <p>The projection is in today's dollars if you enter a return after inflation (a "real" return). If you
+        enter a nominal return, the future figure will buy less than it appears due to inflation.</p></details>
+    </div>
+    <p class="disclaimer">Estimates only, not financial advice. Investment returns are not guaranteed.</p>
+  </div>
+</div></main>
+
+<footer class="site"><div class="container">
+  <div><a href="index.html">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="savings-goal-calculator.html">Savings Goal</a><a href="debt-payoff-calculator.html">Debt Payoff</a></div>
+  <div>© <span id="yr"></span> ClearCalc</div>
+</div></footer>
+
+<script src="assets/finance.js"></script>
+<script src="assets/offers.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var F = window.Finance;
+var ids = ['age','retAge','balance','contrib','rate'];
+function calc(){
+  var age = F.parseNum(document.getElementById('age').value);
+  var retAge = F.parseNum(document.getElementById('retAge').value);
+  var balance = F.parseNum(document.getElementById('balance').value);
+  var contrib = F.parseNum(document.getElementById('contrib').value);
+  var rate = F.parseNum(document.getElementById('rate').value);
+  var years = Math.max(0, retAge - age);
+  var s = F.compound(balance, rate, years, contrib);
+  document.getElementById('r-fv').textContent = F.fmtMoney(s.futureValue, {cents:false});
+  document.getElementById('r-years').textContent = years + ' yrs';
+  document.getElementById('r-contrib').textContent = F.fmtMoney(s.totalContributions, {cents:false});
+  document.getElementById('r-growth').textContent = F.fmtMoney(s.totalInterest, {cents:false});
+}
+ids.forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+calc();
+</script>
+</body>
+</html>

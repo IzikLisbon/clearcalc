@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refinance Calculator — Monthly & Interest Savings | ClearCalc</title>
+<meta name="description" content="Free refinance calculator. Compare your current loan to a new rate and term to see your monthly savings and how much total interest you could save.">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Refinance Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Compare your current mortgage or loan to a new rate and term to estimate monthly and total interest savings."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is refinancing worth it?","acceptedAnswer":{"@type":"Answer","text":"Refinancing is usually worth it when the monthly savings recover the closing costs within the time you plan to keep the loan, often called the break-even point."}},{"@type":"Question","name":"Does a longer new term really save money?","acceptedAnswer":{"@type":"Answer","text":"A longer term lowers the monthly payment but can increase total interest. Compare both the monthly and the total-interest figures before deciding."}}]}]}</script>
+</head>
+<body>
+<header class="site"><div class="container">
+  <a class="brand" href="index.html"><span class="logo">C</span> ClearCalc</a>
+  <nav class="top">
+    <a href="mortgage-calculator.html">Mortgage</a>
+    <a href="refinance-calculator.html">Refinance</a>
+    <a href="auto-loan-calculator.html">Auto Loan</a>
+    <a href="loan-calculator.html">Loan</a>
+    <a href="debt-payoff-calculator.html">Debt Payoff</a>
+    <a href="compound-interest-calculator.html">Compound</a>
+    <a href="retirement-calculator.html">Retirement</a>
+    <a href="savings-goal-calculator.html">Savings</a>
+  </nav>
+</div></header>
+
+<main><div class="container">
+  <p class="crumbs"><a href="index.html">Home</a> › Refinance Calculator</p>
+  <section class="hero" style="padding:26px 0 6px;text-align:left">
+    <h1 style="font-size:32px">Refinance Calculator</h1>
+    <p style="margin:0;max-width:680px">Compare your current loan to a new rate and term to see how much you could save each month and over the life of the loan.</p>
+  </section>
+
+  <div class="calc-wrap">
+    <div class="panel">
+      <h2>Current loan</h2>
+      <div class="field"><label>Remaining balance</label>
+        <div class="input"><span>$</span><input id="balance" inputmode="decimal" value="260,000"></div></div>
+      <div class="row2">
+        <div class="field"><label>Current rate <span class="hint">(APR)</span></label>
+          <div class="input"><input id="curRate" inputmode="decimal" value="7.5"><span>%</span></div></div>
+        <div class="field"><label>Years left</label>
+          <div class="input"><input id="curYears" inputmode="numeric" value="27"><span>yrs</span></div></div>
+      </div>
+      <h2 style="margin-top:20px">New loan</h2>
+      <div class="row2">
+        <div class="field"><label>New rate <span class="hint">(APR)</span></label>
+          <div class="input"><input id="newRate" inputmode="decimal" value="6.0"><span>%</span></div></div>
+        <div class="field"><label>New term</label>
+          <div class="input"><input id="newYears" inputmode="numeric" value="30"><span>yrs</span></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="result-main">
+        <div class="label">Monthly savings</div>
+        <div class="big" id="r-save">$0</div>
+      </div>
+      <div class="stat"><span>Current monthly payment</span><span class="v" id="r-cur">$0</span></div>
+      <div class="stat"><span>New monthly payment</span><span class="v" id="r-new">$0</span></div>
+      <div class="stat"><span>Total interest, current</span><span class="v" id="r-curint">$0</span></div>
+      <div class="stat"><span>Total interest, new</span><span class="v" id="r-newint">$0</span></div>
+      <div class="stat"><span>Lifetime interest savings</span><span class="v" id="r-intsave">$0</span></div>
+    </div>
+  </div>
+
+  <div class="offer" data-offer="refinance"></div>
+  <div class="ad">Ad space</div>
+
+  <div class="content">
+    <h2>How the refinance calculator works</h2>
+    <p>We compute the monthly payment on your remaining balance two ways: once at your current rate and
+    remaining term, and once at the new rate and term you're considering. The difference is your monthly
+    savings. We also compare the total interest each path would cost so you can see the lifetime impact, not
+    just the monthly change.</p>
+    <p class="formula">M = P · [ i(1+i)ⁿ ] / [ (1+i)ⁿ − 1 ]  (computed for both loans)<br>
+    P = remaining balance · i = monthly rate (APR ÷ 12) · n = months</p>
+    <h3>Don't forget closing costs</h3>
+    <p>Refinancing usually has closing costs (often 2–5% of the balance). Divide those costs by your monthly
+    savings to find your break-even point: the number of months it takes the lower payment to pay back the
+    cost of refinancing. If you'll keep the loan past that point, refinancing typically makes sense.</p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <details open><summary>Is refinancing worth it?</summary>
+        <p>Usually when the monthly savings recover the closing costs within the time you plan to keep the
+        loan (the break-even point), and the new rate is meaningfully lower than your current one.</p></details>
+      <details><summary>Does a longer new term really save money?</summary>
+        <p>A longer term lowers the monthly payment but can raise total interest. Always check both the monthly
+        figure and the lifetime interest figure above before deciding.</p></details>
+      <details><summary>Will I save more by keeping the same term?</summary>
+        <p>Often, yes. Refinancing into a shorter or equal term at a lower rate maximizes interest savings.
+        Try entering a new term close to your years remaining to compare.</p></details>
+      <details><summary>Does this work for any loan?</summary>
+        <p>Yes. It works for mortgages, auto loans, and student loans, anywhere you're replacing an existing
+        balance with a new fixed-rate loan.</p></details>
+    </div>
+    <p class="disclaimer">Estimates only, not financial advice. Closing costs not included. Confirm with your lender.</p>
+  </div>
+</div></main>
+
+<footer class="site"><div class="container">
+  <div><a href="index.html">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="auto-loan-calculator.html">Auto Loan</a><a href="loan-calculator.html">Loan</a><a href="debt-payoff-calculator.html">Debt Payoff</a><a href="retirement-calculator.html">Retirement</a></div>
+  <div>© <span id="yr"></span> ClearCalc</div>
+</div></footer>
+
+<script src="assets/finance.js"></script>
+<script src="assets/offers.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var F = window.Finance;
+var ids = ['balance','curRate','curYears','newRate','newYears'];
+function calc(){
+  var balance = F.parseNum(document.getElementById('balance').value);
+  var curRate = F.parseNum(document.getElementById('curRate').value);
+  var curYears = F.parseNum(document.getElementById('curYears').value);
+  var newRate = F.parseNum(document.getElementById('newRate').value);
+  var newYears = F.parseNum(document.getElementById('newYears').value);
+  var c = F.refinanceCompare(balance, curRate, curYears, newRate, newYears);
+  document.getElementById('r-save').textContent = F.fmtMoney(c.monthlySavings);
+  document.getElementById('r-cur').textContent = F.fmtMoney(c.currentMonthly);
+  document.getElementById('r-new').textContent = F.fmtMoney(c.newMonthly);
+  document.getElementById('r-curint').textContent = F.fmtMoney(c.currentTotalInterest, {cents:false});
+  document.getElementById('r-newint').textContent = F.fmtMoney(c.newTotalInterest, {cents:false});
+  document.getElementById('r-intsave').textContent = F.fmtMoney(c.interestSavings, {cents:false});
+}
+ids.forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+calc();
+</script>
+</body>
+</html>

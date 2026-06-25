@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Debt Payoff Calculator — Months to Pay Off & Total Interest | ClearCalc</title>
+<meta name="description" content="Free debt payoff calculator. Enter your balance, interest rate, and monthly payment to see how long until you're debt-free and how much interest you'll pay.">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Debt Payoff Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"See how long it takes to pay off a credit card or loan balance and the total interest you'll pay."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why won't my balance go down?","acceptedAnswer":{"@type":"Answer","text":"If your monthly payment is less than or equal to the monthly interest, the balance never falls. You must pay more than the interest each month to make progress."}},{"@type":"Question","name":"How can I pay off debt faster?","acceptedAnswer":{"@type":"Answer","text":"Increase your monthly payment, lower the interest rate by consolidating or transferring the balance, or both. Even a small payment increase cuts months and interest."}}]}]}</script>
+</head>
+<body>
+<header class="site"><div class="container">
+  <a class="brand" href="index.html"><span class="logo">C</span> ClearCalc</a>
+  <nav class="top">
+    <a href="mortgage-calculator.html">Mortgage</a>
+    <a href="refinance-calculator.html">Refinance</a>
+    <a href="auto-loan-calculator.html">Auto Loan</a>
+    <a href="loan-calculator.html">Loan</a>
+    <a href="debt-payoff-calculator.html">Debt Payoff</a>
+    <a href="compound-interest-calculator.html">Compound</a>
+    <a href="retirement-calculator.html">Retirement</a>
+    <a href="savings-goal-calculator.html">Savings</a>
+  </nav>
+</div></header>
+
+<main><div class="container">
+  <p class="crumbs"><a href="index.html">Home</a> › Debt Payoff Calculator</p>
+  <section class="hero" style="padding:26px 0 6px;text-align:left">
+    <h1 style="font-size:32px">Debt Payoff Calculator</h1>
+    <p style="margin:0;max-width:680px">See exactly how many months until you're debt-free and how much interest you'll pay at your current monthly payment.</p>
+  </section>
+
+  <div class="calc-wrap">
+    <div class="panel">
+      <h2>Your debt</h2>
+      <div class="field"><label>Current balance</label>
+        <div class="input"><span>$</span><input id="balance" inputmode="decimal" value="8,000"></div></div>
+      <div class="row2">
+        <div class="field"><label>Interest rate <span class="hint">(APR)</span></label>
+          <div class="input"><input id="rate" inputmode="decimal" value="22"><span>%</span></div></div>
+        <div class="field"><label>Monthly payment</label>
+          <div class="input"><span>$</span><input id="pay" inputmode="decimal" value="300"></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="result-main">
+        <div class="label">Time to pay off</div>
+        <div class="big" id="r-time">0 months</div>
+      </div>
+      <div class="stat"><span>Total interest paid</span><span class="v" id="r-int">$0</span></div>
+      <div class="stat"><span>Total of all payments</span><span class="v" id="r-total">$0</span></div>
+      <div class="stat"><span>Debt-free date</span><span class="v" id="r-date">—</span></div>
+    </div>
+  </div>
+
+  <div class="offer" data-offer="debt"></div>
+  <div class="ad">Ad space</div>
+
+  <div class="content">
+    <h2>How the debt payoff calculator works</h2>
+    <p>Each month, interest is added to your balance and your payment is applied. Whatever is left after
+    covering that month's interest goes to reducing the principal. We repeat this until the balance reaches
+    zero, then report how long it took and how much interest you paid along the way.</p>
+    <p class="formula">months = −ln(1 − iB ÷ P) ÷ ln(1 + i)<br>
+    B = balance · i = monthly rate (APR ÷ 12) · P = monthly payment</p>
+    <h3>The interest trap</h3>
+    <p>On high-rate debt like credit cards, a large share of a small payment goes straight to interest. If your
+    payment barely exceeds the monthly interest, payoff can take years. Raising the payment, or lowering the
+    rate, dramatically shortens it.</p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <details open><summary>Why won't my balance go down?</summary>
+        <p>If your monthly payment is less than or equal to the monthly interest, the balance never falls. You
+        must pay more than the interest each month to make progress. The calculator flags this case.</p></details>
+      <details><summary>How can I pay off debt faster?</summary>
+        <p>Increase your monthly payment, lower the rate by consolidating into a personal loan or a balance
+        transfer, or both. Even a modest payment increase can cut many months and a lot of interest.</p></details>
+      <details><summary>Snowball or avalanche?</summary>
+        <p>The avalanche method (highest interest rate first) saves the most money. The snowball method
+        (smallest balance first) gives quicker wins for motivation. Both work; pick the one you'll stick with.</p></details>
+      <details><summary>Does consolidating actually help?</summary>
+        <p>It can, if the new rate is meaningfully lower and you don't run the old balances back up. Replacing
+        20%+ card debt with a lower-rate loan reduces the interest you pay and can shorten the payoff.</p></details>
+    </div>
+    <p class="disclaimer">Estimates only, not financial advice. Confirm figures with your lender.</p>
+  </div>
+</div></main>
+
+<footer class="site"><div class="container">
+  <div><a href="index.html">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="refinance-calculator.html">Refinance</a><a href="auto-loan-calculator.html">Auto Loan</a><a href="loan-calculator.html">Loan</a><a href="retirement-calculator.html">Retirement</a></div>
+  <div>© <span id="yr"></span> ClearCalc</div>
+</div></footer>
+
+<script src="assets/finance.js"></script>
+<script src="assets/offers.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var F = window.Finance;
+var ids = ['balance','rate','pay'];
+function calc(){
+  var balance = F.parseNum(document.getElementById('balance').value);
+  var rate = F.parseNum(document.getElementById('rate').value);
+  var pay = F.parseNum(document.getElementById('pay').value);
+  var s = F.payoffMonths(balance, rate, pay);
+  if (s.neverPaysOff){
+    document.getElementById('r-time').textContent = 'Never';
+    document.getElementById('r-int').textContent = '∞';
+    document.getElementById('r-total').textContent = '∞';
+    document.getElementById('r-date').textContent = 'Payment too low';
+    return;
+  }
+  var yrs = Math.floor(s.months/12), mo = s.months%12;
+  var label = s.months + ' months';
+  if (yrs>0) label += ' (' + yrs + ' yr' + (yrs>1?'s':'') + (mo? ' ' + mo + ' mo':'') + ')';
+  document.getElementById('r-time').textContent = label;
+  document.getElementById('r-int').textContent = F.fmtMoney(s.totalInterest, {cents:false});
+  document.getElementById('r-total').textContent = F.fmtMoney(s.totalPaid, {cents:false});
+  var d = new Date(); d.setMonth(d.getMonth() + s.months);
+  document.getElementById('r-date').textContent = d.toLocaleDateString('en-US',{month:'short',year:'numeric'});
+}
+ids.forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+calc();
+</script>
+</body>
+</html>

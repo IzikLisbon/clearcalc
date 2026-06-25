@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto Loan Calculator — Car Payment & Total Interest | ClearCalc</title>
+<meta name="description" content="Free auto loan calculator. Enter the vehicle price, down payment, trade-in, rate, and term to see your monthly car payment and total interest instantly.">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Auto Loan Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Estimate your monthly car payment and total interest on an auto loan."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What car loan term should I choose?","acceptedAnswer":{"@type":"Answer","text":"A shorter term means higher monthly payments but less total interest. Longer terms lower the payment but cost more overall and risk owing more than the car is worth."}},{"@type":"Question","name":"Does a trade-in lower my payment?","acceptedAnswer":{"@type":"Answer","text":"Yes. A trade-in works like extra down payment, reducing the amount you finance and therefore both the monthly payment and total interest."}}]}]}</script>
+</head>
+<body>
+<header class="site"><div class="container">
+  <a class="brand" href="index.html"><span class="logo">C</span> ClearCalc</a>
+  <nav class="top">
+    <a href="mortgage-calculator.html">Mortgage</a>
+    <a href="refinance-calculator.html">Refinance</a>
+    <a href="auto-loan-calculator.html">Auto Loan</a>
+    <a href="loan-calculator.html">Loan</a>
+    <a href="debt-payoff-calculator.html">Debt Payoff</a>
+    <a href="compound-interest-calculator.html">Compound</a>
+    <a href="retirement-calculator.html">Retirement</a>
+    <a href="savings-goal-calculator.html">Savings</a>
+  </nav>
+</div></header>
+
+<main><div class="container">
+  <p class="crumbs"><a href="index.html">Home</a> › Auto Loan Calculator</p>
+  <section class="hero" style="padding:26px 0 6px;text-align:left">
+    <h1 style="font-size:32px">Auto Loan Calculator</h1>
+    <p style="margin:0;max-width:680px">See your monthly car payment and the total interest you will pay over the life of an auto loan.</p>
+  </section>
+
+  <div class="calc-wrap">
+    <div class="panel">
+      <h2>Your car loan</h2>
+      <div class="field"><label>Vehicle price</label>
+        <div class="input"><span>$</span><input id="price" inputmode="decimal" value="35,000"></div></div>
+      <div class="row2">
+        <div class="field"><label>Down payment</label>
+          <div class="input"><span>$</span><input id="down" inputmode="decimal" value="4,000"></div></div>
+        <div class="field"><label>Trade-in value</label>
+          <div class="input"><span>$</span><input id="trade" inputmode="decimal" value="0"></div></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Interest rate <span class="hint">(APR)</span></label>
+          <div class="input"><input id="rate" inputmode="decimal" value="7.5"><span>%</span></div></div>
+        <div class="field"><label>Term</label>
+          <div class="input"><input id="years" inputmode="numeric" value="5"><span>yrs</span></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="result-main">
+        <div class="label">Estimated monthly payment</div>
+        <div class="big" id="r-monthly">$0</div>
+      </div>
+      <div class="stat"><span>Amount financed</span><span class="v" id="r-loan">$0</span></div>
+      <div class="stat"><span>Total interest paid</span><span class="v" id="r-int">$0</span></div>
+      <div class="stat"><span>Total of all payments</span><span class="v" id="r-total">$0</span></div>
+      <div class="stat"><span>Payoff</span><span class="v" id="r-months">0 months</span></div>
+    </div>
+  </div>
+
+  <div class="offer" data-offer="auto"></div>
+  <div class="ad">Ad space</div>
+
+  <div class="content">
+    <h2>How the auto loan calculator works</h2>
+    <p>We take the amount you actually finance (vehicle price minus your down payment and any trade-in value)
+    and spread it over your loan term using the standard amortization formula. Each monthly payment is the
+    same and covers both interest and principal.</p>
+    <p class="formula">M = P · [ i(1+i)ⁿ ] / [ (1+i)ⁿ − 1 ]<br>
+    P = amount financed · i = monthly rate (APR ÷ 12) · n = number of months (years × 12)</p>
+    <h3>What it does not include</h3>
+    <p>This shows principal and interest only. Your real out-the-door cost may also include sales tax, title,
+    registration, dealer fees, and optional add-ons. Many buyers roll some of these into the loan, which
+    raises the amount financed.</p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <details open><summary>What car loan term should I choose?</summary>
+        <p>A shorter term means higher monthly payments but far less total interest. Longer terms (72 or 84
+        months) lower the payment but cost more overall and increase the risk of owing more than the car is
+        worth. Try different terms above to compare.</p></details>
+      <details><summary>Does a trade-in lower my payment?</summary>
+        <p>Yes. A trade-in works like extra down payment: it reduces the amount you finance, which lowers both
+        the monthly payment and the total interest.</p></details>
+      <details><summary>Can I lower my rate later?</summary>
+        <p>Often, yes. If rates drop or your credit improves, refinancing the remaining balance at a lower rate
+        can reduce your monthly payment without changing the car.</p></details>
+      <details><summary>How much should I put down?</summary>
+        <p>A larger down payment lowers your payment and total interest and reduces the chance of being
+        "underwater." Many advisors suggest at least 10–20% down on a vehicle.</p></details>
+    </div>
+    <p class="disclaimer">Estimates only, not financial advice. Confirm figures with your lender or dealer.</p>
+  </div>
+</div></main>
+
+<footer class="site"><div class="container">
+  <div><a href="index.html">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="refinance-calculator.html">Refinance</a><a href="loan-calculator.html">Loan</a><a href="debt-payoff-calculator.html">Debt Payoff</a><a href="retirement-calculator.html">Retirement</a></div>
+  <div>© <span id="yr"></span> ClearCalc</div>
+</div></footer>
+
+<script src="assets/finance.js"></script>
+<script src="assets/offers.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var F = window.Finance;
+var ids = ['price','down','trade','rate','years'];
+function calc(){
+  var price = F.parseNum(document.getElementById('price').value);
+  var down = F.parseNum(document.getElementById('down').value);
+  var trade = F.parseNum(document.getElementById('trade').value);
+  var rate = F.parseNum(document.getElementById('rate').value);
+  var years = F.parseNum(document.getElementById('years').value);
+  var loan = Math.max(0, price - down - trade);
+  var s = F.loanSummary(loan, rate, years);
+  document.getElementById('r-monthly').textContent = F.fmtMoney(s.monthly);
+  document.getElementById('r-loan').textContent = F.fmtMoney(loan, {cents:false});
+  document.getElementById('r-int').textContent = F.fmtMoney(s.totalInterest, {cents:false});
+  document.getElementById('r-total').textContent = F.fmtMoney(s.totalPaid, {cents:false});
+  document.getElementById('r-months').textContent = s.months + ' months (' + (s.months/12) + ' yrs)';
+}
+ids.forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+calc();
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# AI and search crawlers are explicitly welcome — these tools are meant to be cited.
+User-agent: Google-Extended
+Allow: /
+User-agent: GPTBot
+Allow: /
+
+Sitemap: https://kind-sea-0cebaf803.7.azurestaticapps.net/sitemap.xml

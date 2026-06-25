@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compound Interest Calculator — Grow Your Savings | ClearCalc</title>
+<meta name="description" content="Free compound interest calculator. See how an initial deposit plus monthly contributions grow over time. Includes total contributions and interest earned.">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Compound Interest Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"See how savings and investments grow over time with an initial deposit and regular monthly contributions."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why does starting early matter so much?","acceptedAnswer":{"@type":"Answer","text":"Because the longest dollars compound the most. The same monthly contribution started ten years earlier can end up worth dramatically more."}},{"@type":"Question","name":"What return rate should I use?","acceptedAnswer":{"@type":"Answer","text":"Savings accounts are typically low single digits; a broad stock index has historically averaged roughly 7% after inflation over long periods, though returns vary and are not guaranteed."}}]}]}</script>
+</head>
+<body>
+<header class="site"><div class="container">
+  <a class="brand" href="index.html"><span class="logo">C</span> ClearCalc</a>
+  <nav class="top">
+    <a href="mortgage-calculator.html">Mortgage</a>
+    <a href="refinance-calculator.html">Refinance</a>
+    <a href="auto-loan-calculator.html">Auto Loan</a>
+    <a href="loan-calculator.html">Loan</a>
+    <a href="debt-payoff-calculator.html">Debt Payoff</a>
+    <a href="compound-interest-calculator.html">Compound</a>
+    <a href="retirement-calculator.html">Retirement</a>
+    <a href="savings-goal-calculator.html">Savings</a>
+  </nav>
+</div></header>
+
+<main><div class="container">
+  <p class="crumbs"><a href="index.html">Home</a> › Compound Interest Calculator</p>
+  <section class="hero" style="padding:26px 0 6px;text-align:left">
+    <h1 style="font-size:32px">Compound Interest Calculator</h1>
+    <p style="margin:0;max-width:680px">See how your savings or investments grow over time, with an initial deposit and regular monthly contributions.</p>
+  </section>
+
+  <div class="calc-wrap">
+    <div class="panel">
+      <h2>Your plan</h2>
+      <div class="field"><label>Starting amount</label>
+        <div class="input"><span>$</span><input id="principal" inputmode="decimal" value="5,000"></div></div>
+      <div class="field"><label>Monthly contribution</label>
+        <div class="input"><span>$</span><input id="monthly" inputmode="decimal" value="300"></div></div>
+      <div class="row2">
+        <div class="field"><label>Annual return</label>
+          <div class="input"><input id="rate" inputmode="decimal" value="7"><span>%</span></div></div>
+        <div class="field"><label>Years</label>
+          <div class="input"><input id="years" inputmode="numeric" value="20"><span>yrs</span></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="result-main">
+        <div class="label">Future balance</div>
+        <div class="big" id="r-fv">$0</div>
+      </div>
+      <div class="stat"><span>Total you contribute</span><span class="v" id="r-contrib">$0</span></div>
+      <div class="stat"><span>Interest earned</span><span class="v" id="r-int">$0</span></div>
+      <div class="stat"><span>Time horizon</span><span class="v" id="r-months">0</span></div>
+    </div>
+  </div>
+
+  <div class="offer" data-offer="invest"></div>
+  <div class="ad">Ad space</div>
+
+  <div class="content">
+    <h2>How compound interest works</h2>
+    <p>Compound interest is interest earning interest. Each period, your balance grows, and the next period
+    earns a return on that larger balance. Add regular contributions and the effect snowballs, which is why
+    starting early matters so much.</p>
+    <p class="formula">FV = P(1+i)ⁿ + PMT · [ (1+i)ⁿ − 1 ] / i<br>
+    P = starting amount · PMT = monthly contribution · i = monthly rate (annual ÷ 12) · n = months</p>
+    <p>This calculator compounds monthly and assumes contributions are made at the end of each month.</p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <details open><summary>Why does starting early matter so much?</summary>
+        <p>Because the longest dollars compound the most. The same monthly contribution started ten years
+        earlier can end up worth dramatically more, since each early dollar has more years to grow.</p></details>
+      <details><summary>What return rate should I use?</summary>
+        <p>It depends on where the money sits. Savings accounts are typically low single digits; a broad stock
+        index has historically averaged roughly 7% after inflation over long periods, though returns vary and
+        are never guaranteed. Try a conservative number to be safe.</p></details>
+      <details><summary>Does it account for inflation or taxes?</summary>
+        <p>No. This shows nominal growth. For "today's dollars," use an inflation-adjusted (real) return.
+        Taxes depend on the account type, such as a tax-advantaged retirement account.</p></details>
+    </div>
+    <p class="disclaimer">Estimates only, not financial advice. Investment returns are not guaranteed.</p>
+  </div>
+</div></main>
+
+<footer class="site"><div class="container">
+  <div><a href="index.html">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="loan-calculator.html">Loan</a><a href="savings-goal-calculator.html">Savings Goal</a></div>
+  <div>© <span id="yr"></span> ClearCalc</div>
+</div></footer>
+
+<script src="assets/finance.js"></script>
+<script src="assets/offers.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var F = window.Finance;
+function calc(){
+  var p = F.parseNum(document.getElementById('principal').value);
+  var m = F.parseNum(document.getElementById('monthly').value);
+  var rate = F.parseNum(document.getElementById('rate').value);
+  var years = F.parseNum(document.getElementById('years').value);
+  var s = F.compound(p, rate, years, m);
+  document.getElementById('r-fv').textContent = F.fmtMoney(s.futureValue, {cents:false});
+  document.getElementById('r-contrib').textContent = F.fmtMoney(s.totalContributions, {cents:false});
+  document.getElementById('r-int').textContent = F.fmtMoney(s.totalInterest, {cents:false});
+  document.getElementById('r-months').textContent = years + ' years (' + s.months + ' months)';
+}
+['principal','monthly','rate','years'].forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+calc();
+</script>
+</body>
+</html>

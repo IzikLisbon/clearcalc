@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loan Calculator — Monthly Payment for Car & Personal Loans | ClearCalc</title>
+<meta name="description" content="Free loan calculator for car loans and personal loans. Enter the amount, interest rate, and term to see your monthly payment and total interest instantly.">
+<link rel="stylesheet" href="assets/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebApplication","name":"Loan Calculator","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate the monthly payment and total interest on a car loan, personal loan, or any fixed-rate loan."},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How can I lower my monthly loan payment?","acceptedAnswer":{"@type":"Answer","text":"You have three levers: borrow less, get a lower interest rate, or choose a longer term. A longer term lowers the monthly payment but increases total interest."}},{"@type":"Question","name":"Does paying extra each month help?","acceptedAnswer":{"@type":"Answer","text":"Yes. Any amount above the scheduled payment goes straight to principal, which shortens the loan and cuts total interest."}}]}]}</script>
+</head>
+<body>
+<header class="site"><div class="container">
+  <a class="brand" href="index.html"><span class="logo">C</span> ClearCalc</a>
+  <nav class="top">
+    <a href="mortgage-calculator.html">Mortgage</a>
+    <a href="refinance-calculator.html">Refinance</a>
+    <a href="auto-loan-calculator.html">Auto Loan</a>
+    <a href="loan-calculator.html">Loan</a>
+    <a href="debt-payoff-calculator.html">Debt Payoff</a>
+    <a href="compound-interest-calculator.html">Compound</a>
+    <a href="retirement-calculator.html">Retirement</a>
+    <a href="savings-goal-calculator.html">Savings</a>
+  </nav>
+</div></header>
+
+<main><div class="container">
+  <p class="crumbs"><a href="index.html">Home</a> › Loan Calculator</p>
+  <section class="hero" style="padding:26px 0 6px;text-align:left">
+    <h1 style="font-size:32px">Loan Calculator</h1>
+    <p style="margin:0;max-width:680px">Calculate the monthly payment and total interest on a car loan, personal loan, or any fixed-rate loan.</p>
+  </section>
+
+  <div class="calc-wrap">
+    <div class="panel">
+      <h2>Your loan</h2>
+      <div class="field"><label>Loan amount</label>
+        <div class="input"><span>$</span><input id="amount" inputmode="decimal" value="25,000"></div></div>
+      <div class="row2">
+        <div class="field"><label>Interest rate <span class="hint">(APR)</span></label>
+          <div class="input"><input id="rate" inputmode="decimal" value="7.9"><span>%</span></div></div>
+        <div class="field"><label>Term</label>
+          <div class="input"><input id="years" inputmode="numeric" value="5"><span>yrs</span></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="result-main">
+        <div class="label">Monthly payment</div>
+        <div class="big" id="r-monthly">$0</div>
+      </div>
+      <div class="stat"><span>Total interest paid</span><span class="v" id="r-int">$0</span></div>
+      <div class="stat"><span>Total of all payments</span><span class="v" id="r-total">$0</span></div>
+      <div class="stat"><span>Number of payments</span><span class="v" id="r-months">0</span></div>
+    </div>
+  </div>
+
+  <div class="offer" data-offer="auto"></div>
+  <div class="ad">Ad space</div>
+
+  <div class="content">
+    <h2>How the loan calculator works</h2>
+    <p>This tool calculates the fixed monthly payment on an amortizing loan, the kind used for cars, personal
+    loans, and most consumer borrowing. Each month you pay the same amount, with the split gradually shifting
+    from interest toward principal as the balance falls.</p>
+    <p class="formula">M = P · [ i(1+i)ⁿ ] / [ (1+i)ⁿ − 1 ]<br>
+    P = loan amount · i = monthly rate (APR ÷ 12) · n = months (years × 12)</p>
+
+    <div class="faq">
+      <h2>Frequently asked questions</h2>
+      <details open><summary>How can I lower my monthly payment?</summary>
+        <p>You have three levers: borrow less, get a lower interest rate, or choose a longer term. A longer
+        term lowers the monthly payment but increases the total interest you pay, so weigh both.</p></details>
+      <details><summary>What is APR and why does it matter?</summary>
+        <p>APR is the yearly cost of the loan including interest. A lower APR means a cheaper loan. Even one
+        percentage point makes a real difference over a multi-year term, try it above.</p></details>
+      <details><summary>Does paying extra each month help?</summary>
+        <p>Yes. Any amount above the scheduled payment goes straight to principal, which shortens the loan and
+        cuts total interest. Many lenders allow this with no penalty.</p></details>
+      <details><summary>Car loan vs personal loan?</summary>
+        <p>The math is identical. Car loans are usually secured by the vehicle and often have lower rates;
+        personal loans are unsecured and tend to cost more. Plug in your real rate for an accurate figure.</p></details>
+    </div>
+    <p class="disclaimer">Estimates only, not financial advice. Confirm figures with your lender.</p>
+  </div>
+</div></main>
+
+<footer class="site"><div class="container">
+  <div><a href="index.html">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="compound-interest-calculator.html">Compound Interest</a><a href="savings-goal-calculator.html">Savings Goal</a></div>
+  <div>© <span id="yr"></span> ClearCalc</div>
+</div></footer>
+
+<script src="assets/finance.js"></script>
+<script src="assets/offers.js"></script>
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+var F = window.Finance;
+function calc(){
+  var amount = F.parseNum(document.getElementById('amount').value);
+  var rate = F.parseNum(document.getElementById('rate').value);
+  var years = F.parseNum(document.getElementById('years').value);
+  var s = F.loanSummary(amount, rate, years);
+  document.getElementById('r-monthly').textContent = F.fmtMoney(s.monthly);
+  document.getElementById('r-int').textContent = F.fmtMoney(s.totalInterest, {cents:false});
+  document.getElementById('r-total').textContent = F.fmtMoney(s.totalPaid, {cents:false});
+  document.getElementById('r-months').textContent = s.months;
+}
+['amount','rate','years'].forEach(function(id){ document.getElementById(id).addEventListener('input', calc); });
+calc();
+</script>
+</body>
+</html>
