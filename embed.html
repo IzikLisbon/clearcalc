@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-adsense-account" content="ca-pub-5611852230193979">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5611852230193979" crossorigin="anonymous"></script>
+<title>Embed a Free Mortgage Calculator on Your Site | ClearCalc</title>
+<meta name="description" content="Add a free, no-signup mortgage calculator to your website with one line of code. Lightweight, responsive, and free to use on any blog or business site.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .snippet{position:relative;}
+  .snippet textarea{width:100%;min-height:96px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;border:1px solid var(--line);border-radius:10px;padding:14px;background:#0f1b2d;color:#d7f5ea;resize:vertical;}
+  .copy-btn{margin-top:10px;background:var(--brand);color:#fff;border:0;border-radius:9px;padding:10px 18px;font-weight:700;cursor:pointer;font-size:14px;}
+  .copy-btn:hover{background:#0a6b50;}
+  .preview-wrap{margin-top:8px;}
+  .embed-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:24px 0;}
+  @media(max-width:760px){.embed-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header class="site"><div class="container">
+  <a class="brand" href="index.html"><span class="logo">C</span> ClearCalc</a>
+  <nav class="top">
+    <a href="mortgage-calculator.html">Mortgage</a>
+    <a href="refinance-calculator.html">Refinance</a>
+    <a href="auto-loan-calculator.html">Auto Loan</a>
+    <a href="loan-calculator.html">Loan</a>
+    <a href="debt-payoff-calculator.html">Debt Payoff</a>
+    <a href="compound-interest-calculator.html">Compound</a>
+    <a href="retirement-calculator.html">Retirement</a>
+    <a href="savings-goal-calculator.html">Savings</a>
+  </nav>
+</div></header>
+
+<main><div class="container">
+  <p class="crumbs"><a href="index.html">Home</a> › Embed a calculator</p>
+  <section class="hero" style="padding:26px 0 6px;text-align:left">
+    <h1 style="font-size:32px">Add a free calculator to your site</h1>
+    <p style="margin:0;max-width:680px">Drop the ClearCalc mortgage calculator into any website, blog, or article with one line of code. It's lightweight, responsive, free, and needs no signup. Great for real-estate, finance, and personal-budget content.</p>
+  </section>
+
+  <div class="embed-grid">
+    <div class="panel">
+      <h2>1. Copy the embed code</h2>
+      <div class="snippet">
+        <textarea id="snippet" readonly>&lt;iframe src="https://getclearcalc.com/embed/mortgage-calculator.html" width="100%" height="540" style="max-width:480px;border:1px solid #e6ecf3;border-radius:14px" loading="lazy" title="Mortgage Calculator by ClearCalc"&gt;&lt;/iframe&gt;</textarea>
+        <button class="copy-btn" id="copy">Copy code</button>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:12px">Paste it into your page's HTML wherever you want the calculator to appear. That's it. Please keep the "Powered by ClearCalc" link so the tool stays free.</p>
+    </div>
+    <div class="panel">
+      <h2>2. Live preview</h2>
+      <div class="preview-wrap">
+        <iframe src="embed/mortgage-calculator.html" width="100%" height="540" style="max-width:480px;border:1px solid var(--line);border-radius:14px" loading="lazy" title="Mortgage Calculator preview"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <h2>Why embed a ClearCalc calculator?</h2>
+    <p>An interactive calculator keeps readers on your page longer and helps them make a real decision instead of bouncing to a search engine. The ClearCalc widget runs entirely in the visitor's browser, loads fast, works on mobile, and never asks anyone to sign up.</p>
+    <h3>What's included</h3>
+    <ul>
+      <li>Home price, down payment, interest rate, and term inputs</li>
+      <li>Live monthly payment, loan amount, and total interest</li>
+      <li>Responsive layout that fits any column width</li>
+      <li>Free to use on personal and commercial sites</li>
+    </ul>
+    <p class="disclaimer">Estimates only, not financial advice. More embeddable calculators are on the way.</p>
+  </div>
+</div></main>
+
+<footer class="site"><div class="container">
+  <div><a href="index.html">Home</a><a href="mortgage-calculator.html">Mortgage</a><a href="refinance-calculator.html">Refinance</a><a href="loan-calculator.html">Loan</a><a href="debt-payoff-calculator.html">Debt Payoff</a><a href="retirement-calculator.html">Retirement</a></div>
+  <div>© <span id="yr"></span> ClearCalc</div>
+</div></footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.getElementById('copy').addEventListener('click', function(){
+  var ta = document.getElementById('snippet');
+  ta.select(); ta.setSelectionRange(0, 99999);
+  try { navigator.clipboard.writeText(ta.value); } catch(e) { document.execCommand('copy'); }
+  this.textContent = 'Copied!';
+  var self = this; setTimeout(function(){ self.textContent = 'Copy code'; }, 2000);
+});
+</script>
+</body>
+</html>
