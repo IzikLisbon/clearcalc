@@ -1,0 +1,16 @@
+# ACR Task — weekly refresh of ClearCalc's live mortgage rates (Azure-native; NO
+# GitHub Actions, NO Mac). Runs on registry prospectacr20260613 on a weekly cron
+# (Fridays, set at task-create time) entirely in Azure. It pulls the latest
+# 30/15-year averages from FRED, rewrites the on-page rate box + JSON-LD
+# dateModified + sitemap lastmod via update-rates.js, then deploys the static
+# site to Azure Static Web Apps. The SWA deployment token is read from Key Vault
+# (prospectkv20260613/CLEARCALC-SWA-TOKEN) via the task's managed identity
+# (prospect-deploy-mi) — never stored in git or on disk.
+version: v1.1.0
+secrets:
+  - id: swatoken
+    keyvault: https://prospectkv20260613.vault.azure.net/secrets/CLEARCALC-SWA-TOKEN
+    clientID: cf6524ea-8be1-48ea-b59c-34299a15c00a
+steps:
+  - cmd: node:20-bookworm bash -ceu "node update-rates.js && rm -rf /site && mkdir -p /site && cp -a ./. /site/ && rm -rf /site/update-rates.js /site/scripts /site/.git /site/.github /site/acr-rates-task.yaml /site/_shot-home.png /site/_shot-mortgage.png && npx -y @azure/static-web-apps-cli@latest deploy /site --deployment-token '{{.Secrets.swatoken}}' --env production"
+    timeout: 1800
