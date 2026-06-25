@@ -7,4 +7,4 @@ Allow: /
 User-agent: GPTBot
 Allow: /
 
-Sitemap: https://kind-sea-0cebaf803.7.azurestaticapps.net/sitemap.xml
+Sitemap: https://getclearcalc.com/sitemap.xml
