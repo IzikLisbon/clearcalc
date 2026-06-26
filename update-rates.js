@@ -88,4 +88,8 @@ async function main() {
   console.log(`rates: 30yr ${m30.value}% / 15yr ${m15.value}% as of ${asOf} — updated ${changed}/${PAGES.length} pages`);
 }
 
-main().catch((err) => { console.error(`update-rates failed: ${err.message}`); process.exit(1); });
+// A rate refresh is best-effort: if FRED is unreachable (e.g. transient network
+// or egress restriction from the build agent), log a warning and exit 0 so the
+// deploy still proceeds with the existing rate values — a data-source outage
+// must never block a site deploy.
+main().catch((err) => { console.warn(`update-rates skipped: ${err.message} (continuing without a rate refresh)`); process.exit(0); });
